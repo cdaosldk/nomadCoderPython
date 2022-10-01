@@ -18,3 +18,50 @@ tax_caculator(5000000)
 def so_good(user_name="anoymous"):
   print("hello", user_name)
 so_good()
+
+def plus(a=0,b=0):
+  print(a+b)
+plus(3,6)
+def minus(a=0,b=0):
+  print(a-b)
+
+minus(30,20)
+def multifly(a=0,b=0):
+  print(a*b)
+
+multifly(40,20)
+def divide(a=0,b=0):
+  print(a/b)
+
+divide(9,3)
+def power_of(a=0,b=0):
+  print(a**b)
+
+power_of(2,5)
+
+def tax_calc(money):
+  return(money*0.35)
+#return은 값을 받아내고 보낼 수 있다, print는 콘솔에 출력만 할뿐
+    
+def pay_tax(tax):
+  print("thank you for paying", tax)
+
+to_pay = tax_calc(15000000)
+
+pay_tax(to_pay)
+
+def make_juice(fruit):
+  return f"{fruit}+juice"
+
+def add_ice(juice):
+  return f"{juice}+ice"
+
+def add_sugar(iced_juice):
+  return f"{iced_juice}+sugar"
+
+juice = make_juice("apple")
+cold_juice = add_ice(juice)
+perfect_juice = add_sugar(cold_juice)
+
+print(perfect_juice)
+#파이썬에선 함수 안 return 밑의 코드는 작동하지 않는다
