@@ -115,7 +115,6 @@ perfect_juice = add_sugar(cold_juice)
 
 print(perfect_juice)
 #파이썬에선 함수 안 return 밑의 코드는 작동하지 않는다
-#파이썬에선 함수 안 return 밑의 코드는 작동하지 않는다
 
 password_correct = False
 
@@ -146,6 +145,8 @@ name = "nico"
 #.뒤 함수는 변수에 종속된 함수는 메서드!!! *함수 vs 메서드
 print(name.upper())
 
+#리스트 추가 시 맨 뒤로, 리스트 안에 리스트를 추가할 수 있
+
 days = ["Mon","Tue","Wed"]
 #튜플은 소괄, 불변, 메서드가 많지않음
 #
@@ -174,3 +175,17 @@ player.pop('age')
 player['xp'] = 1500
 """
 #키 값으로는 문자열, 참거짓, 숫자, 리스트, 튜플이 사용가능
+
+websites = (
+  "google.com",
+  "https://airbnb.com",
+  "https://twitter.com",
+  "https://facebook.com",
+  "https://tiktok.com"
+)
+#매 번 반복문이 실행될 때마다, list에서 each 매개변수로 값을 저장 후 실행
+for website in websites:
+  if not website.startswith("https://"):
+    print("have to fix")
+
+#String에 변수를 추가하기: f""
