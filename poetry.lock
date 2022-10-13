@@ -67,6 +67,17 @@ html5lib = ["html5lib"]
 lxml = ["lxml"]
 
 [[package]]
+name = "bs4"
+version = "0.0.1"
+description = "Dummy package for Beautiful Soup"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+beautifulsoup4 = "*"
+
+[[package]]
 name = "certifi"
 version = "2022.9.24"
 description = "Python package for providing Mozilla's CA Bundle."
@@ -501,7 +512,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8.0,<3.9"
-content-hash = "589dee12885277fd4e6bcedca8a0d332ee746473efbaba2b79c4ee475e0f8998"
+content-hash = "46c533cbc9019ac492fd2bcdc878b0ec67d14aa5c504261dd247b98297971084"
 
 [metadata.files]
 aiohttp = []
@@ -509,6 +520,7 @@ aiosignal = []
 async-timeout = []
 attrs = []
 beautifulsoup4 = []
+bs4 = []
 certifi = []
 charset-normalizer = []
 click = []
