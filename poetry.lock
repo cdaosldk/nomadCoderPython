@@ -124,6 +124,14 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "extractor"
+version = "0.5"
+description = "bindings for GNU libextractor, the metadata extractor"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "flask"
 version = "2.2.2"
 description = "A simple framework for building complex web applications."
@@ -512,7 +520,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8.0,<3.9"
-content-hash = "46c533cbc9019ac492fd2bcdc878b0ec67d14aa5c504261dd247b98297971084"
+content-hash = "b15273c7f2efdcd686daddf583fc18c2d6d4f581613068f9a6ed1309697cae41"
 
 [metadata.files]
 aiohttp = []
@@ -526,6 +534,7 @@ charset-normalizer = []
 click = []
 colorama = []
 debugpy = []
+extractor = []
 flask = []
 frozenlist = []
 idna = []
