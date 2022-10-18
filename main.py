@@ -1,18 +1,19 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
+from requests import get
 
 options = Options()
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 
 browser = webdriver.Chrome(options = options)
-
 #print(browser.page_source)
-base_url = "https://kr.indeed.com/jobs?q="
-search_term = "python"
 
+base_url = "https://kr.indeed.com/jobs?q="
+search_term= "python"
 browser.get(f"{base_url}{search_term}")
+
 results = []
 soup = BeautifulSoup(browser.page_source, "html.parser")  
 job_list = soup.find('ul', class_= "jobsearch-ResultsList css-0")
@@ -34,7 +35,6 @@ for job in jobs:
       'position' : title
     }
     results.append(job_data)
-
   
 #beaifulsoup은 검색결과를 list와 dictionary로 만든다
 print(results)
@@ -46,3 +46,17 @@ print(results)
     #mosaic-zone을 가진 li 구분, 필요없음
     #None은 무언가 없을때 사용하는 자료형이다
 """
+
+def get_page_count(keyword):
+  base_url = "https://kr.indeed.com/jobs?q="
+  
+  response = get(f"{base_url}{keyword}")
+  
+  soup = BeautifulSoup(browser.page_source, "html.parser")
+  pagination = soup.find("nav", attrs={"aria-label": "pagination"})
+  if pagination == None:
+    return 1
+  pages = pagination.find("div a")#recursive, 재귀
+  
+
+get_page_count("python")

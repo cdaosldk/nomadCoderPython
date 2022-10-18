@@ -1,18 +1,19 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
+from requests import get
 
 options = Options()
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 
 browser = webdriver.Chrome(options = options)
-
 #print(browser.page_source)
-base_url = "https://www.indeed.com/jobs?q="
-search_term = "python"
 
+base_url = "https://kr.indeed.com/jobs?q="
+search_term= "python"
 browser.get(f"{base_url}{search_term}")
+
 results = []
 soup = BeautifulSoup(browser.page_source, "html.parser")  
 job_list = soup.find('ul', class_= "jobsearch-ResultsList css-0")
@@ -28,13 +29,12 @@ for job in jobs:
     company = job.find("span",class_="companyName")
     region = job.find("div",class_="companyLocation")
     job_data = {
-      'link' : f"https://www.indeed.com{link}",
+      'link' : f"https://kr.indeed.com{link}",
       'company' : company.string,
       'location' : region.string,
       'position' : title
     }
     results.append(job_data)
-
   
 #beaifulsoup은 검색결과를 list와 dictionary로 만든다
 print(results)
