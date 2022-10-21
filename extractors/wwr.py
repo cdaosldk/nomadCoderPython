@@ -9,7 +9,7 @@ def extract_wwr_jobs(keyword):
   else:
     results=[]
     soup = BeautifulSoup(response.text, "html.parser")
-    jobs =soup.find_all('section',class_="jobs")
+    jobs = soup.find_all('section',class_="jobs")
     for job in jobs:
       job_posts = job.find_all('li')
       job_posts.pop(-1)
@@ -22,10 +22,10 @@ def extract_wwr_jobs(keyword):
         title = anchor.find('span', class_='title')
         #element.string = 문자만 추출
         job_data = {
-          'company': company.string,
-          'kind': kind.string,
-          'location': region.string,
-          'title': title.string,
+          'company': company.string.replace(","," "),
+          'kind': kind.string.replace(","," "),
+          'location': region.string.replace(","," "),
+          'title': title.string.replace(","," "),
           'link': f"https://weworkremotely.com{link}"
         }
         results.append(job_data)
