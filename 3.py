@@ -1,4 +1,6 @@
 from extractors.wwr import extract_wwr_jobs
+from extractors.indeed import extract_indeed_jobs
+from extractors.indeed import get_page_count
 
 keyword = input("What do you want to search for?")
 

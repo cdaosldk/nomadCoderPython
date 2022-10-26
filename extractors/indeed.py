@@ -6,12 +6,10 @@ options = Options()
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 
-browser = webdriver.Chrome(options = options)
 #print(browser.page_source)
 
-keyword="python"
-
 def extract_indeed_jobs(keyword):
+  browser = webdriver.Chrome(options = options)
   base_url = "https://kr.indeed.com/jobs?q="
   browser.get(f"{base_url}{keyword}")
   
@@ -38,7 +36,8 @@ def extract_indeed_jobs(keyword):
       results.append(job_data)
     
   #beaifulsoup은 검색결과를 list와 dictionary로 만든다
-  print(results)
+  browser.quit()
+  return results
   """
       h2 = job.find("h2",class_="jobTitle")
       a = h2.find("a")
@@ -48,11 +47,20 @@ def extract_indeed_jobs(keyword):
       #None은 무언가 없을때 사용하는 자료형이다
   """
 def get_page_count(keyword):
+  browser = webdriver.Chrome(options = options)
   base_url = "https://kr.indeed.com/jobs?q="
   browser.get(f"{base_url}{keyword}")
   soupPage = BeautifulSoup(browser.page_source, "html.parser")
   navigation = soupPage.find("nav", role ="navigation")
   if navigation == None:
     return 1
-  pages = navigation.find_all('div', recursive = False) #recursive = 재귀
-  return len(pages)
+  pages = navigation.find_all('div', recursive = False)
+  #recursive = 재귀
+  count = len(pages)
+  if count >= 5:
+    return 5
+  else:
+    return count
+  browser.quit()
+
+print(get_page_count("pyhton"))
