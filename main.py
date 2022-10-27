@@ -13,7 +13,7 @@ def extract_indeed_jobs(keyword):
   base_url = "https://kr.indeed.com/jobs?q="
   browser.get(f"{base_url}{keyword}")
   
-  results = []
+  results=[]
   soup = BeautifulSoup(browser.page_source, "html.parser")  
   job_list = soup.find('ul', class_= "jobsearch-ResultsList css-0")
   jobs = job_list.find_all('li', recursive = False)
@@ -36,7 +36,6 @@ def extract_indeed_jobs(keyword):
       results.append(job_data)
     
   #beaifulsoup은 검색결과를 list와 dictionary로 만든다
-  browser.quit()
   return results
   """
       h2 = job.find("h2",class_="jobTitle")
@@ -61,6 +60,6 @@ def get_page_count(keyword):
     return 5
   else:
     return count
-  browser.quit()
 
-get_page_count("pyhton")
+print(extract_indeed_jobs("python"))
+print(get_page_count("python"))
